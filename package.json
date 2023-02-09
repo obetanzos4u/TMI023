@@ -1,0 +1,26 @@
+{
+    "name": "task-manager",
+    "version": "1.0.0",
+    "main": "server.js",
+    "proxy": "http://127.0.0.1:3001",
+    "scripts": {
+        "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+        "start:prod": "node server.js",
+        "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+        "client": "cd client && npm run start",
+        "install": "cd client && npm install",
+        "build": "cd client && npm run build",
+        "heroku-postbuild": "npm run build"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "concurrently": "^6.0.0",
+        "express": "^4.17.1",
+        "if-env": "^1.0.4",
+        "mongoose": "^5.12.14",
+        "nodemon": "^2.0.7",
+        "react-spinners": "^0.11.0",
+        "request": "^2.88.2",
+        "strong-soap": " 3.0.0"
+    }
+}
