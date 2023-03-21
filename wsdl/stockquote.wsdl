@@ -120,3 +120,6 @@
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>
+
+
+<!-- Este código es un documento de lenguaje de descripción de servicios web (WSDL). Define las operaciones que puede realizar un servicio web, así como los tipos de datos utilizados en esas operaciones. En este caso, define un servicio web que proporciona cotizaciones de acciones para un símbolo de empresa determinado. Define cuatro enlaces diferentes para acceder al servicio web: SOAP, SOAP12, HTTP GET y HTTP POST. También especifica la ubicación del servicio web en http://www.webservicex.net/stockquote.asmx -->

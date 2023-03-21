@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
+//El componente de orden superior withRouter se usa para dar acceso al componente a los accesorios del enrutador. 
+
 import api from "../../utils/api";
 
+// Este código es un componente de React que genera un formulario con dos conjuntos de campos de entrada para una URL del sistema, un usuario funcional y un usuario técnico.
+
 function Config() {
+
+  // El gancho useEffect se usa para ejecutar algún código cuando se monta el componente, pero dado que tiene una matriz vacía como segundo argumento, no se ejecutará ningún código. 
+
   useEffect(() => {}, []);
   return (
     <>

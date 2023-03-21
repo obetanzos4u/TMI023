@@ -33,11 +33,12 @@ function List(props) {
     } else {
       if (units.length == 0) {
         api.getUnits().then((unitList) => {
+         // console.log(unitList);
           setUnits(unitList.data.CodeList[0].Code);
         });
       } else {
       }
-      console.log(currentBlock);
+     // console.log(currentBlock);
       if (currentBlock.length == 0) {
         reload();
       } else {
@@ -53,21 +54,23 @@ function List(props) {
     setLoading(true);
 
     API.getTask({ site: site, type: "1" }).then((data) => {
-      if (data.data.SiteLogisticsTask.length == 0) {
-      } else {
-        data.data.SiteLogisticsTask.forEach((element) => {
-          api
-            .getPartner(element.BusinessTransactionDocumentReferenceID)
-            .then((response) => {
-              element.CustomerParty.CustomerPartyName =
-                response.data[0].AddressSnapshotAddressSnapshot.AddressSnapshotFormattedAddress[0].FormattedName;
-              setAllTask(data.data.SiteLogisticsTask);
-              setTask(data.data.SiteLogisticsTask);
-            });
-        });
+      // if (data.data.SiteLogisticsTask) {
+        if (data.data.SiteLogisticsTask.length == 0) {
+        } else {
+          data.data.SiteLogisticsTask.forEach((element) => {
+            api
+              .getPartner(element.BusinessTransactionDocumentReferenceID)
+              .then((response) => {
+                element.CustomerParty.CustomerPartyName =
+                  response.data[0].AddressSnapshotAddressSnapshot.AddressSnapshotFormattedAddress[0].FormattedName;
+                setAllTask(data.data.SiteLogisticsTask);
+                setTask(data.data.SiteLogisticsTask);
+              });
+          });
 
-        setOperation("inbound");
-        setLoading(false);
+          setOperation("inbound");
+          setLoading(false);
+        // }
       }
     });
   };
@@ -81,7 +84,7 @@ function List(props) {
       setTask(response.data.SiteLogisticsTask);
       setOperation("outbound");
       setLoading(false);
-      console.log(response.data.SiteLogisticsTask);
+     // console.log(response.data.SiteLogisticsTask);
     });
   };
 

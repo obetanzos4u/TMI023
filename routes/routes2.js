@@ -19,4 +19,6 @@ router2.route("/saveRecord").post(taskController.create);
 
 // Matches with "/api/books/:id"
 
+// Este código está configurando rutas para una aplicación Express.js. Requiere el módulo express y tres archivos de controlador, userController, configController y taskController. Luego configura rutas para cada uno de estos controladores con varios métodos HTTP (POST, GET). Las rutas son para buscar usuarios, crear usuarios, eliminar usuarios, actualizar usuarios y sus contraseñas, buscar configuraciones del sistema, crear configuraciones del sistema, actualizar configuraciones del sistema y guardar registros. Finalmente exporta el objeto router2 para que pueda ser utilizado en otras partes de la aplicación.
+
 module.exports = router2;

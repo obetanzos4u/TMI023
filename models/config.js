@@ -12,3 +12,5 @@ const configSchema = new Schema({
 const Config = mongoose.model("Config", configSchema);
 
 module.exports = Config;
+
+// Este código está configurando un esquema y modelo Mongoose para un objeto Config. El objeto Config tendrá cinco propiedades: sapUrl, sapFunctionalUser, sapFunctionalPass, saptechnicallUser y saptechnicallPass. Todas estas propiedades son cadenas y son obligatorias. Además, los valores de cada propiedad deben ser únicos. Finalmente, el modelo de configuración se exporta para que pueda usarse en otras partes de la aplicación.

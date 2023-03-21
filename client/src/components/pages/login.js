@@ -46,7 +46,14 @@ function Login(props) {
         setEmployee("9000");
         props.history.push("/Main");
 
-        /*
+      // if (!admin.current.checked) {
+      // if (userf.current.value != "" && password.current.value) {
+      //   setUser("2020");
+      //   setSite("101");
+      //   setEmployee("9000");
+
+      //   props.history.push("/main");
+      /*
         api
           .login(userf.current.value, password.current.value)
           .then((response) => {
@@ -60,6 +67,19 @@ function Login(props) {
               sendMessage("warning", "usuario no valido");
             }
           });*/
+        api
+          .login(userf.current.value, password.current.value)
+          .then((response) => {
+            if (response.data.length > 0) {
+              setUser(response.data[0]._id);
+              setSite(response.data[0].site);
+              setEmployee(response.data[0].sapNumber);
+
+              props.history.push("/main");
+            } else {
+              sendMessage("warning", "usuario no valido");
+            }
+          });
       } else {
         sendMessage("warning", "Has olvidado completar algún campo");
       }
@@ -84,7 +104,25 @@ function Login(props) {
               sendMessage("warning", "usuario no valido");
             }
           });
-          */
+        */
+        api
+          .login(userf.current.value, password.current.value)
+          .then((response) => {
+            if (response.data.length > 0) {
+              setUser(response.data[0]._id);
+              setSite(response.data[0].site);
+              setEmployee(response.data[0].sapNumber);
+
+              if (response.data[0].isAdmin) {
+                setAdmin(true);
+                props.history.push("/Admin");
+              } else {
+                props.history.push("/Main");
+              }
+            } else {
+              sendMessage("warning", "usuario no valido");
+            }
+          });
 
         setUser("Hoc");
         setSite("101");

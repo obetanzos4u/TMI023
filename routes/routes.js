@@ -1,5 +1,6 @@
 const { default: axios } = require("axios");
 var request = require("request");
+// Este código importa el módulo de "solicitud" en el archivo actual. El módulo de "solicitud" es una biblioteca que le permite realizar solicitudes HTTP desde Node.js. Se puede usar para realizar solicitudes HTTP síncronas y asíncronas, y se puede usar para acceder a las API o descargar archivos.
 var soap = require("strong-soap").soap;
 var access = {
   system: "https://my427062.businessbydesign.cloud.sap/",
@@ -7,6 +8,7 @@ var access = {
   soap: { user: "_TASK2", password: "Pruebas00" },
 };
 module.exports = function (app) {
+  // Este código es un módulo de Node.js que exporta una función que toma una aplicación como argumento. 
   app.get("/getUnits", (req, res) => {
     ("use strict");
     var uname = access.soap.user;
@@ -24,15 +26,16 @@ module.exports = function (app) {
         },
       },
     };
+    // La función crea una solicitud GET para el ENDPOINT "/getUnits" y utiliza el protocolo SOAP para realizar una solicitud al servidor.
     soap.createClient(url, options, function (err, client) {
       var method = client["FindCodeListByID"];
       client.setSecurity(new soap.BasicAuthSecurity(uname, pword));
-
+  // Establece el nombre de usuario y la contraseña para la autenticación, luego envía un objeto requestArgs que contiene los criterios de selección para la consulta.
       method(requestArgs, function (err, result, envelope, soapHeader) {
         console.log("Response Envelope: \n" + envelope);
         //'result' is the response body
         console.log("Result: \n" + JSON.stringify(result));
-
+  // Finalmente, envía la respuesta del servidor al cliente en formato JSON.
         res.send(JSON.stringify(result));
       });
     });
@@ -176,6 +179,7 @@ module.exports = function (app) {
   app.post("/getLabelProduct", (req, res) => {
     console.log("-------------------------------");
     console.log(req.body);
+    
     request.get(
       req.body.data,
       {
